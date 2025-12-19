@@ -26,4 +26,4 @@ jobs:
       - name: Run tests
         run: |
           chmod 777 cc
-          ./cc -url=eotua.com -speed=100 -thread=8 -timeout=2500 -time=70 -http_methods 'GET' -cookie='test=cookievalue;'
+          ./cc -url=eotua.com -speed=100 -thread=8 -timeout=2500 -time=400 -http_methods 'GET' -cookie='test=cookievalue;'
